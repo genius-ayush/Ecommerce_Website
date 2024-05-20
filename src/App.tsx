@@ -1,28 +1,22 @@
 
 import './App.css'
 import Navbar from './Components/Navbar'
-import HeroSlider from './Components/HeroSlider'
-import FeaturesStrip from './Components/FeaturesStrip'
-import Products from './Components/Products'
-import CartScrollBar from './Components/CartScrollBar'
+import Hero from './Components/Hero'
+import MostPopular from './Components/MostPopular'
+import OurMasks from './Components/OurMasks'
 import NewArrivals from './Components/NewArrivals'
-import SpecialOffers from './Components/SpecialOffers'
-import BlogInfoScroller from './Components/BlogInfoScroller'
-import Newsletter from './Components/Newsletter'
+import Involve from './Components/Involve'
 import Footer from './Components/Footer'
 function App() {
 
   return (
     <div>
       <Navbar/>
-      <HeroSlider/>
-      <FeaturesStrip/>
-      <Products/>
-      <CartScrollBar/>
+      <Hero/>
+      <MostPopular/>
       <NewArrivals/>
-      <SpecialOffers/>
-      <BlogInfoScroller/>
-      <Newsletter/>
+      <OurMasks/>
+      <Involve/>
       <Footer/>
     </div>
   )
