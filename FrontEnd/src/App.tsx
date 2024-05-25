@@ -7,6 +7,7 @@ import Register from './Components/Register'
 import SignIn from './Components/Signin'
 import Footer from './Components/Footer'
 import Landing from './Components/Landing'
+import Product from './Components/Product'
 function App() {
 
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path='/shop' element={<Shop/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/signin' element={<SignIn/>}/>    
+      <Route path='/product' element={<Product/>}/>  
      </Routes>
      <Footer/>
      </Router>

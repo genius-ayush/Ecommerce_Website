@@ -7,14 +7,18 @@ import {
     Button,
   } from "@material-tailwind/react";
 
-  
+  interface EcommerceCardProps{
+    imageUrl : string ; 
+    productName : string ; 
+    price : string ; 
+  }
    
-  export function EcommerceCard() {
+  export function EcommerceCard({imageUrl , productName , price} : EcommerceCardProps) : JSX.Element  {
     return (
       <Card className="w-96">
         <CardHeader shadow={false} floated={false} className="h-96">
           <img
-            src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
+            src={imageUrl}
             alt="card-image"
             className="h-full w-full object-cover"
           />
@@ -22,20 +26,13 @@ import {
         <CardBody>
           <div className="mb-2 flex items-center justify-between">
             <Typography color="blue-gray" className="font-medium">
-              Apple AirPods
+              {productName}
             </Typography>
             <Typography color="blue-gray" className="font-medium">
-              $95.00
+              {price}
             </Typography>
           </div>
-          <Typography
-            variant="small"
-            color="gray"
-            className="font-normal opacity-75"
-          >
-            With plenty of talk and listen time, voice-activated Siri access, and
-            an available wireless charging case.
-          </Typography>
+          
         </CardBody>
         <CardFooter className="pt-0">
           <Button
