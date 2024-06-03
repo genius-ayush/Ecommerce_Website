@@ -15,7 +15,7 @@ app.listen(port, () => {
     console.log(`app listening at http://localhost:${port}`);
 });
 
-mongoose.connect('mongodb+srv://ayushsanjayrawal:sSl8nGjVuWdQBprk@cluster0.fgu9moe.mongodb.net/', {
+mongoose.connect('', {
     // useNewUrlParser: true,
     // useUnifiedTopology: true,
 }).then(() => { 
