@@ -12,14 +12,27 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`app listening at http://localhost:${port}`);
 });
 
 mongoose.connect('mongodb+srv://ayushsanjayrawal:sSl8nGjVuWdQBprk@cluster0.fgu9moe.mongodb.net/', {
     // useNewUrlParser: true,
     // useUnifiedTopology: true,
-}).then(() => {
+}).then(() => { 
     console.log('Connected to MongoDB');
 }).catch(err => {
     console.error('Error connecting to MongoDB', err);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+

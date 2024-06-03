@@ -20,6 +20,7 @@ interface LoginRequestBody {
 
 router.post('/signup', async (req: Request<{}, {}, SignupRequestBody>, res: Response) => {
     const { username, email, password } = req.body;
+    console.log(username) ; 
     const user = await User.findOne({ email });
 
     if (user) {
@@ -45,7 +46,7 @@ router.post('/login', async (req: Request<{}, {}, LoginRequestBody>, res: Respon
 });
 
 router.get('/me', authenticateJwt, async (req: Request, res: Response) => {
-    const userId = (req as any).userId; // Assuming authenticateJwt sets req.userId
+    const userId = (req as any).userId;
     const user = await User.findById(userId);
 
     if (user) {
