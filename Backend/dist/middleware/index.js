@@ -5,11 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.authenticateJwt = exports.SECRET = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-exports.SECRET = 'SECr3t';
+exports.SECRET = "SECr3t";
 const authenticateJwt = (req, res, next) => {
     const authHeader = req.headers.authorization;
     if (authHeader) {
-        const token = authHeader.split(' ')[1];
+        const token = authHeader.split(" ")[1];
         jsonwebtoken_1.default.verify(token, exports.SECRET, (err, payload) => {
             if (err) {
                 return res.sendStatus(403);

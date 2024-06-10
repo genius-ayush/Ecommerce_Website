@@ -16,8 +16,9 @@ app.listen(port, () => {
     console.log(`app listening at http://localhost:${port}`);
 });
 mongoose_1.default.connect('mongodb+srv://ayushsanjayrawal:sSl8nGjVuWdQBprk@cluster0.fgu9moe.mongodb.net/', {
-// useNewUrlParser: true,
-// useUnifiedTopology: true,
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
+    dbName: "EcommerceWebsite"
 }).then(() => {
     console.log('Connected to MongoDB');
 }).catch(err => {

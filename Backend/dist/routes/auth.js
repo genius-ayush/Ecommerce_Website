@@ -28,6 +28,7 @@ router.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function*
         const newUser = new db_1.User({ username, email, password });
         yield newUser.save();
         const token = jsonwebtoken_1.default.sign({ id: newUser._id }, middleware_1.SECRET, { expiresIn: '1h' });
+        console.log(token);
         res.json({ message: 'User created successfully', token });
     }
 }));
@@ -43,8 +44,8 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 }));
 router.get('/me', middleware_1.authenticateJwt, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const userId = req.userId;
-    const user = yield db_1.User.findById(userId);
+    const userId = req.headers["userId"];
+    const user = yield db_1.User.findOne({ _id: userId });
     if (user) {
         res.json({ username: user.username });
     }

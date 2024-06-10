@@ -1,9 +1,30 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const SignIn: React.FC = () => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const [email , setEmail] = useState("") ; 
+  const [password , setPassword] = useState("") ; 
+  const [error , setError] = useState("") ; 
+  const navigate = useNavigate() ; 
+  const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Add your form submission logic here
+
+    try{
+      const response = await axios.post("http://localhost:3000/auth/login" , {
+        email : email  , 
+        password : password
+      }) 
+
+      let data = response.data ; 
+
+      if(data && data.token){
+        localStorage.setItem("token" , data.token)
+        navigate("/landing") ; 
+      }
+    }catch(err){
+      setError("Login failed . Please try again." )
+    }
   };
 
   return (
@@ -28,6 +49,7 @@ const SignIn: React.FC = () => {
                 type="email"
                 autoComplete="email"
                 required
+                onChange={(e)=> setEmail(e.target.value)}
                 className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
               />
             </div>
@@ -47,6 +69,7 @@ const SignIn: React.FC = () => {
                 type="password"
                 autoComplete="current-password"
                 required
+                onChange={(e)=> setPassword(e.target.value)} 
                 className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
               />
             </div>
@@ -61,6 +84,10 @@ const SignIn: React.FC = () => {
             </button>
           </div>
         </form>
+
+        {error && (
+          <p className='mt-4 text-center text-sm text-red-500'>{error}</p>
+        )}
 
         <p className="mt-10 text-center text-sm text-gray-500">
         Don’t have an account yet?{' '}

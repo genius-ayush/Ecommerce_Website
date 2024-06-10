@@ -29,11 +29,12 @@ router.post('/signup', async (req: Request<{}, {}, SignupRequestBody>, res: Resp
         const newUser = new User({ username, email, password });
         await newUser.save();
         const token = jwt.sign({ id: newUser._id }, SECRET, { expiresIn: '1h' });
+        console.log(token) ; 
         res.json({ message: 'User created successfully', token });
     }
 });
 
-router.post('/login', async (req: Request<{}, {}, LoginRequestBody>, res: Response) => {
+router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email, password });
 
@@ -45,15 +46,14 @@ router.post('/login', async (req: Request<{}, {}, LoginRequestBody>, res: Respon
     }
 });
 
-router.get('/me', authenticateJwt, async (req: Request, res: Response) => {
-    const userId = (req as any).userId;
-    const user = await User.findById(userId);
-
-    if (user) {
+router.get('/me', authenticateJwt, async (req, res) => {
+    const userId = req.headers["userId"] ; 
+    const user = await User.findOne({ _id: userId });
+      if (user) {
         res.json({ username: user.username });
-    } else {
+      } else {
         res.status(403).json({ message: 'User not logged in' });
-    }
+      }
 });
 
 export default router;

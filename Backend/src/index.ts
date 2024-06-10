@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import authRoutes from './routes/auth';
-
+const database_url = process.env.MONGO_API_KEY || 'fallback_database_url'
 const app: Application = express();
 const port: number = 3000;
 
@@ -15,9 +15,10 @@ app.listen(port, () => {
     console.log(`app listening at http://localhost:${port}`);
 });
 
-mongoose.connect('', {
+mongoose.connect(database_url, {
     // useNewUrlParser: true,
     // useUnifiedTopology: true,
+    dbName: "EcommerceWebsite"
 }).then(() => { 
     console.log('Connected to MongoDB');
 }).catch(err => {
