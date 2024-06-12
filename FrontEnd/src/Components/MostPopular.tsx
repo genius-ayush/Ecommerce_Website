@@ -1,5 +1,7 @@
 import { EcommerceCard } from "./EcommerceCard";
+import { useNavigate } from "react-router-dom";
 function MostPopular() {
+  const navigate = useNavigate() ; 
   return (
     <div>
       <div className="font-mono text-3xl font-medium flex items-center justify-center p-8 mt-9">
@@ -29,7 +31,7 @@ function MostPopular() {
       </div>
       <div className="flex justify-center mb-10" >
 
-      <button type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-lg text-sm px-20 py-4 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Go to shop</button>
+      <button type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-lg text-sm px-20 py-4 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={()=> navigate("/shop")}>Go to shop</button>
       </div>
 
       

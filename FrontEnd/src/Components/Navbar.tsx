@@ -36,16 +36,16 @@ function Navbar() {
   return (
     <div className="flex justify-between p-6 pl-20 sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200 firefox:bg-opacity-90">
       <div className="flex gap-5 pt-2">
-        <div>Shop</div>
-        <div>FAQ</div>
-        <div>Contact</div>  
+        <div onClick={()=> navigate("/shop")} className="hover:bg-sky-700 group cursor-pointer">Shop</div>
+        <div onClick={()=> navigate("/faq")} className="hover:bg-sky-700 group cursor-pointer">FAQ</div>
+        <div onClick={()=> navigate("/contact")} className="hover:bg-sky-700 group cursor-pointer">Contact</div>  
       </div>
-      <div className="font-mono text-4xl font-normal tracking-wide">
+      <div className="font-mono text-4xl font-normal tracking-wide hover:bg-sky-700 group cursor-pointer"  onClick={()=> navigate("/landing")} >
         MASKCRAFT
       </div>
 
-      <div className="flex gap-6 mr-20 hover:bg-sky-700" onClick={() => navigate(userName ? "/profile" : "/signin")}>
-        <div className="flex gap-1">
+      <div className="flex gap-6 mr-20 hover:bg-sky-700 group cursor-pointer" >
+        <div className="flex gap-1" onClick={() => navigate(userName ? "/profile/personalInfo" : "/signin")}>
           <div>
             <IoPersonCircle size={25} />
           </div>
@@ -55,7 +55,7 @@ function Navbar() {
             <div className="text-base">Login</div>
           )}
         </div>
-        <div>
+        <div className=""  onClick={()=> navigate("/profile/cart")}>
           <IoBagCheckOutline size={22} />
         </div>
       </div>

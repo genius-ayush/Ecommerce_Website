@@ -56,4 +56,9 @@ router.get('/me', authenticateJwt, async (req, res) => {
       }
 });
 
+router.post('/logout', authenticateJwt, (req: Request, res: Response) => {
+    // Invalidate token (in a real scenario, you would use a token blacklist or other method)
+    res.json({ message: 'Logged out successfully' });
+});
+
 export default router;

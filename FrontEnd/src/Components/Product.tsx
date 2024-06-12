@@ -14,7 +14,7 @@ const data = [
     imgelink: "./public/store/shop/p1/img3.jpg",
   },
 ];
-
+ 
 function Product() {
   const [active, setActive] = useState("./public/store/shop/p1/img1.jpg");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
